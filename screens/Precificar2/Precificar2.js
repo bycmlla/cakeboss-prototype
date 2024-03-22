@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
 import {
   useFonts,
   Montserrat_800ExtraBold,
@@ -23,68 +23,70 @@ const Precificar2 = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Insira o Nome do Igrediente</Text>
-        <TextInput
-          style={[styles.input, styles.inputLarge]}
-          value={productName}
-          onChangeText={setProductName}
-          placeholder="Ex: Coxinha, Pastel, Kibe..."
-          placeholderTextColor="grey"
-          fontStyle="italic"
-        />
-      </View>
-      <View style={styles.small}>
-        <View>
-          <Text style={styles.label}>Valor</Text>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Insira o Nome do Ingrediente</Text>
           <TextInput
-            style={[styles.input, styles.inputHalf]}
-            value={valorFrito}
-            onChangeText={setValorFrito}
-            placeholder="Ex: 1, 1.5,..."
-            keyboardType="numeric"
+            style={[styles.input, styles.inputLarge]}
+            value={productName}
+            onChangeText={setProductName}
+            placeholder="Ex: Coxinha, Pastel, Kibe..."
             placeholderTextColor="grey"
             fontStyle="italic"
           />
         </View>
-        <View>
-          <Text style={styles.label}>Volume (Kg)</Text>
+        <View style={styles.small}>
+          <View>
+            <Text style={styles.label}>Valor</Text>
+            <TextInput
+              style={[styles.input, styles.inputHalf]}
+              value={valorFrito}
+              onChangeText={setValorFrito}
+              placeholder="Ex: 1, 1.5,..."
+              keyboardType="numeric"
+              placeholderTextColor="grey"
+              fontStyle="italic"
+            />
+          </View>
+          <View>
+            <Text style={styles.label}>Volume (Kg)</Text>
+            <TextInput
+              style={[styles.input, styles.inputHalf]}
+              value={peso}
+              onChangeText={setPeso}
+              placeholder="Ex: 20, 25.5..."
+              keyboardType="numeric"
+              placeholderTextColor="grey"
+              fontStyle="italic"
+            />
+          </View>
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Quantidade Utilizada (Kg)</Text>
           <TextInput
-            style={[styles.input, styles.inputHalf]}
-            value={peso}
-            onChangeText={setPeso}
-            placeholder="Ex: 20, 25.5..."
-            keyboardType="numeric"
+            style={[styles.input, styles.inputLarge]}
+            value={productName}
+            onChangeText={setProductName}
+            placeholder="Ex: Coxinha, Pastel, Kibe..."
             placeholderTextColor="grey"
             fontStyle="italic"
           />
         </View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleInserirIngredientes}
+        >
+          <Text style={styles.buttonText}>Adicionar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonFinalizar}
+          onPress={handleInserirIngredientes}
+        >
+          <Text style={styles.buttonTextFinalizar}>Finalizar</Text>
+        </TouchableOpacity>
       </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Quantidade Utilizada (Kg)</Text>
-        <TextInput
-          style={[styles.input, styles.inputLarge]}
-          value={productName}
-          onChangeText={setProductName}
-          placeholder="Ex: Coxinha, Pastel, Kibe..."
-          placeholderTextColor="grey"
-          fontStyle="italic"
-        />
-      </View>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleInserirIngredientes}
-      >
-        <Text style={styles.buttonText}>Adicionar</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.buttonFinalizar}
-        onPress={handleInserirIngredientes}
-      >
-        <Text style={styles.buttonTextFinalizar}>Finalizar</Text>
-      </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 
